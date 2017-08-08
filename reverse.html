@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <meta charset="utf-8">
+    <title>Personal Site</title>
+    <link rel="stylesheet" href="assets/stylesheets/styles.css">
+  </head>
+  <body>
+    <header class="header-container">
+      <h1><a href="index.html">Aram Anderson</a></h1>
+      <h3>Backend Developer</h3>
+      <nav>
+        <a class="btn btn-alt" href="posts.html">Posts</a>
+        <a class="btn btn-alt" href="index.html">Home</a>
+      </nav>
+      </header>
+      <section class="container">
+        <p>Offhand, I can’t think of when I needed to reverse a number, but I know there’s been an occasion or two. With a dynamically typed language like ruby, it’s easy to simply convert the number to a string class object and use the built in .reverse method. I probably did that when it came up, and thought nothing of it.</p>
+        <p>At school yesterday, I had a chance to meet with one of my mentors, and he brought up using a mathematical solution to this problem. It was just an offhand comment in the course of a larger conversation, but it made me think about the problem, and I wanted to learn what the better solution might be.</p>
+        <p>If we define a ruby method to solve this the int to string to int way, it would look something like this:</p>
+        <pre class="prettyprint lang-rb">
+        def reverse_as_string(num)
+          num.to_s.reverse.to_i
+        end
+        </pre>
+        <p>That’s pretty simple. Let’s do it the other way.</p>
+        <pre class="prettyprint lang-rb">
+        def reverse_num(num)
+         reversed = 0
+         until num == 0
+           last_digit = num % 10
+           reversed = (reversed * 10) + last_digit
+           num = num / 10
+         end
+         reversed
+        end
+        </pre>
+        <p>That’s all well and good, but what was interesting about this problem in the first place was efficiency. How do these two approaches stack up?</p>
+
+        <p>Let’s benchmark them side by side.</p>
+        <pre class="prettyprint lang-rb">
+          array = Array.new(10000000) { rand 1..10000000 }
+
+          Benchmark.bmbm do |x|
+          x.report("string:")   { array.each { |i| reverse_as_string(i) } }
+          x.report("math:") { array.each { |i| reverse_num(i) } }
+          end
+        </pre>
+        <pre class="prettyprint lang-rb">
+          Rehearsal -------------------------------------------
+          string:   3.910000   0.050000   3.960000 (  4.020166)
+          math:     5.990000   0.070000   6.060000 (  6.154384)
+          --------------------------------- total: 10.020000sec
+
+                        user     system      total        real
+          string:   3.890000   0.050000   3.940000 (  4.001591)
+          math:     5.700000   0.070000   5.770000 (  5.852306)
+        </pre>
+        <p>That was not what I expected! The to_s approach actually outperformed the mathematical approach by about 50%. I will certainly concede that I’m very likely missing a more efficient way to do this mathematically, and if you have some ideas, leave me a comment. I’d be happy to rerun benchmarks and update this post with better solutions.</p>
+        <p>The original and longer version of this post is <a href="https://aramanderson.com/rubynumberreverse/">here</a>
+      </section>
+    <footer class="header-container">
+      <nav>
+        <a class="btn btn-alt" href="posts.html">Posts</a>
+        <a class="btn btn-alt" href="index.html">Home</a>
+      </nav>
+      <small>&copy; Aram Anderson</small>
+    </footer>
+  </body>
+</html>

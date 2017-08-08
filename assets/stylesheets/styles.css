@@ -1,0 +1,117 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  background: linear-gradient(to bottom right, darkgrey, slategrey);
+  background-repeat: no-repeat;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+p {
+  color: black;
+  font-size: 16px;
+}
+
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.container {
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 960px;
+  background-color: rgba(255, 255, 255, 0.8)
+}
+
+.header-container {
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 960px;
+  background-color: rgba(220, 209, 164, 0.8)
+}
+
+h1, h3, h4, h5, p {
+  margin-bottom: 22px;
+}
+
+.btn {
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+}
+
+.btn-alt {
+  border: 1px solid #dfe2e5;
+  padding: 10px 30px;
+  background-color: lightgrey;
+}
+
+.hero {
+  padding: 22px 80px 66px 80px;
+}
+ h1 {
+   font-size: 20px;
+   font-style: italic;
+}
+
+.code-container {
+  display: inline-block;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 960px;
+  background-color: black
+  font-color: white
+}
